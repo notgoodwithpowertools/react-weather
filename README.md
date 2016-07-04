@@ -66,3 +66,5 @@ module.exports = {
 
 ## Install react-router
 ```
+npm install react-router --save-dev
+```
