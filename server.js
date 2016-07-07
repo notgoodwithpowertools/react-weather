@@ -5,6 +5,10 @@ var bodyParser = require('body-parser');
 var myPort = 8081;
 var env_port = process.env.PORT;
 
+const PORT = process.env.PORT || myPort;
+
+console.log("Trying port...", PORT);
+
 app.all('/*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -97,9 +101,10 @@ app.get("/ingredients", function(req, res){
 });
 
 
-app.set('port', process.env.PORT || myPort);
+//app.set('port', process.env.PORT || myPort);
+app.set('port', PORT);
 
-app.listen(myPort, function () {
+app.listen(PORT, function () {
   console.log('Server listening on port...' + app.get('port'));
   console.log('Directory...' + __dirname);
 });
