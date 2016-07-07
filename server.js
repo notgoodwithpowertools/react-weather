@@ -3,12 +3,22 @@ var app = express();
 var bodyParser = require('body-parser');
 
 var myPort = 8081;
+var env_port = process.env.PORT;
 
 app.all('/*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   res.header("Access-Control-Allow-Methods", "POST", "GET");
   next();
+});
+
+//redirect http requests
+app.use(function(req, res, next){
+  if (req.headers['x-forwarded-proto'] === 'http') {
+    next();
+  } else {
+    res.redirect('http://' + req.hostname + req.url);
+  }
 });
 
 //turn the server into an API server
@@ -87,6 +97,12 @@ app.get("/ingredients", function(req, res){
 });
 
 
+app.set('port', process.env.PORT || myPort);
+
+app.listen(myPort, function () {
+  console.log('Server listening on port...' + app.get('port'));
+  console.log('Directory...' + __dirname);
+});
 
 var dir =  process.cwd();
 console.log('PWDirectory...' + dir);
@@ -96,14 +112,7 @@ app.get('/', function (req, res) {
   res.send('Hello World from Node Express!' + app.get('port'));
 });
 
-
-app.listen(myPort, function () {
-  console.log('Server listening on port...' + app.get('port'));
-  console.log('Directory...' + __dirname);
-});
-
 console.log("Working directory - " + __dirname);
-app.set('port', process.env.PORT || myPort);
 app.use('/public', express.static(__dirname + '/public'));
 
 app.use(function(req, res, next) {
