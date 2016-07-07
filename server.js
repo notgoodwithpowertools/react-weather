@@ -106,14 +106,14 @@ app.listen(myPort, function () {
 
 var dir =  process.cwd();
 console.log('PWDirectory...' + dir);
-app.use('/current', express.static(dir + '/public'));
+//app.use('/current', express.static(dir + '/public'));
 
 app.get('/', function (req, res) {
   res.send('Hello World from Node Express!' + app.get('port'));
 });
 
 console.log("Working directory - " + __dirname);
-app.use('/public', express.static(__dirname + '/public'));
+//app.use('/public', express.static(__dirname + '/public'));
 
 app.use(function(req, res, next) {
   res.status(404).send('Sorry cant find that!');
