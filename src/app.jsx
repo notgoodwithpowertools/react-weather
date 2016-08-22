@@ -2,6 +2,12 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 
 var {Route, Router, IndexRoute, hashHistory} = require('react-router');
+
+//Load foundation
+require('style!css!foundation-sites/dist/foundation.min.css');
+$(document).foundation();
+
+
 //Test experimental JS
 
 //Import Router
@@ -21,6 +27,10 @@ console.log("Object Two:", ObjTwo);
 // Destructuring
 var {name} = ObjOne;
 console.log("Destructured name:", name);
+/*
+var {name2} = ObjTwo;
+console.log("Destructured Object 2 name:", name2);
+*/
 
 
 

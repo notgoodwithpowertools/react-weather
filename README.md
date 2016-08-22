@@ -68,3 +68,8 @@ module.exports = {
 ```
 npm install react-router --save-dev
 ```
+Install Foundation support
+```
+npm install css-loader script-loader style-loader jquery foundation-sites --save-dev
+
+```
