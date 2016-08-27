@@ -19,7 +19,7 @@ var Examples = () => {
 
   return (
     <div>
-      <h1 className="text-center">Examples Component</h1>
+      <h1 className="text-center page-title">Examples</h1>
       <p>A few example locations</p>
       <ol>
         <li>
@@ -28,7 +28,6 @@ var Examples = () => {
         <li>
           <Link to='/?location=Rio'>Rio</Link>
         </li>
-
       </ol>
     </div>
   )
