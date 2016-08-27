@@ -19,7 +19,7 @@ var Weather = React.createClass({
   handleSearch: function(location) {
      console.log("handleSearch activated in parent...", location);
      var that = this;
-     this.setState({isLoading: true, errorMessage: undefined});
+     this.setState({isLoading: true, location: undefined, temp: undefined, errorMessage: undefined});
 
      //alert(location);
      //Manually set response
@@ -38,15 +38,30 @@ var Weather = React.createClass({
 
        that.setState({location: location, temp: temp, isLoading: false});
      },function(e){
-          console.log("Promise return error message", e.message);
+          console.log("Promise returned error message", e.message);
 
           //alert(e.message);
           that.setState({isLoading: false, errorMessage: e.message})
      });
      //console.log("message", errorMessage);
+  },
 
+  componentDidMount: function(){
+    var location = this.props.location.query.location;
 
+    if (location && location.length > 0) {
+      this.handleSearch(location);
+      window.location.hash = '#/';
+    }
+  },
 
+  componentWillReceiveProps: function(newProps){
+    var location = newProps.location.query.location;
+
+    if (location && location.length > 0) {
+      this.handleSearch(location);
+      window.location.hash = '#/';
+    }
   },
 
   render: function(){

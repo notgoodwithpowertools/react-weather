@@ -73,3 +73,7 @@ Install Foundation support
 npm install css-loader script-loader style-loader jquery foundation-sites --save-dev
 
 ```
+Install SASS support
+```
+npm install sass-loader node-sass
+```

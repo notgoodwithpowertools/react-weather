@@ -8,7 +8,7 @@ require('style!css!foundation-sites/dist/foundation.min.css');
 $(document).foundation();
 
 //App CSS
-require('style!css!./styles/app.css');
+require('style!css!sass!./styles/app.scss');
 
 
 //Test experimental JS
